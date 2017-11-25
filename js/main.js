@@ -1,11 +1,11 @@
 // $(function() {
   const model = {
     init () {
-      this.currentPrice = 10 ;
+      this.currentPrice = 5 ;
 
     },
     bid() {
-      this.currentPrice = this.currentPrice * 1.5 ;
+      this.currentPrice = this.currentPrice + 2.5 ;
     },
     getCurrentPrice(){
       return this.currentPrice;
@@ -52,7 +52,7 @@
       this.taskView = $('#taskView');
       this.chartView = $('#chartView');
       this.cards = $('.card');
-      this.bidPrice = $('#bidPrice');
+      this.bidPrice = $('#currentBidPrice');
 
       this.taskView.hide();
       this.chartView.hide();
