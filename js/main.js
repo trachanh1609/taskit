@@ -64,10 +64,10 @@ var data = {
 $(function() {
   const model = {
     init () {
-      this.lyrics = data ;
+      this.data = data ;
 
       // console.log(this.lyrics.three.origin.full);
-      console.log('model initiated');
+      // console.log('model initiated');
     }
   };
 
@@ -75,8 +75,8 @@ $(function() {
     init () {
       model.init();
       view.init();
-      console.log('controller initiated');
-
+      // console.log('controller initiated');
+      view.updateOrigin(model.data);
     }
   };
 
@@ -84,11 +84,17 @@ $(function() {
     init () {
       this.origin = $('#origin-lyrics');
       this.translated = $('#translated-lyrics');
-      console.log('view initiated');
+      // console.log('view initiated');
 
     },
-    updateOrigin(){
-      
+    updateOrigin(lyrics){
+      let self = this;
+      self.origin.html('');
+      lyrics.lines.forEach(function(line){
+        let lineContent = $('<p>' +line.origin.full  + '</p>')
+        // console.log(line.origin.full);
+        self.origin.append(lineContent);
+      });
     },
     updateTranslated(){
 
