@@ -40,10 +40,12 @@
     init () {
       this.groupView = $('#groupView');
       this.taskView = $('#taskView');
+      this.chartView = $('#chartView');
       this.cards = $('.card');
       this.bidPrice = $('#bidPrice');
 
       this.taskView.hide();
+      this.chartView.hide();
       this.addEventToCards();
     },
     goToTaskView(){
