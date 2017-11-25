@@ -9,20 +9,37 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+  <div class="container">
+    <nav>
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left">
+          <li><a href="sass.html">A</a></li>
+          <li><a href="badges.html">B</a></li>
+          <li><a href="collapsible.html">C</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br>
     <div class="card col s12 full-height">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="https://picsum.photos/200/300/?random">
+      <div class="card-image waves-effect waves-block waves-light group">
+        <img class="groupImg" src="https://picsum.photos/200/300/?random">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-        <p><a href="#">This is a link</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        <span class="card-title grey-text text-darken-4">Shared Apartment<i class="material-icons right">more_vert</i></span>
+        <p>+15<i class="tiny material-icons">euro_symbol</i></p>
       </div>
     </div>
-
+    <br>
+    <div class="card col s12 full-height">
+      <div class="card-image waves-effect waves-block waves-light group">
+        <img class="groupImg" src="https://picsum.photos/200/300/?random">
+      </div>
+      <div class="card-content">
+        <span class="card-title grey-text text-darken-4">Football Team<i class="material-icons right">more_vert</i></span>
+        <p>-5<i class="tiny material-icons">euro_symbol</i></p>
+      </div>
+    </div>
+  </div>
   <script type="text/javascript" src="js/jQuery.3.2.1.js"></script>
   <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
