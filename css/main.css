@@ -18,3 +18,11 @@
   top: 3em;
   left:30%;
 }
+
+.tabs .indicator{
+  background-color: #0D47A1;
+}
+
+.currency{
+  font-size: 20px;
+}
