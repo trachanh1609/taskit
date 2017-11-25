@@ -18,11 +18,21 @@
       view.init();
       this.updatePrice();
     },
-    nextToTaskView() {
-      view.goToTaskView();
+    // nextFromGroupToTask() {
+    //   view.groupView.slideUp(400); // slideUp = hide
+    //   view.taskView.slideDown(400); // slideDown = show
+    // },
+    nextFromTaskToChart() {
+      view.taskView.slideUp(400);
+      view.chartView.slideDown(400);
     },
-    backToGroupView() {
-      view.goToGroupView();
+    backFromTaskToGroup() {
+      view.taskView.slideUp(400);
+      view.groupView.slideDown(400);
+    },
+    backFromChartToTask() {
+      view.chartView.slideUp(400);
+      view.taskView.slideDown(400);
     },
     bidPrice() {
       model.bid();
@@ -55,6 +65,10 @@
     goToGroupView(){
       this.taskView.slideUp(400);
       this.groupView.slideDown(400);
+    },
+    goToChartView(){
+      this.taskView.slideUp(400);
+      this.chartView.slideDown(400);
     },
     addEventToCards(){
       let self = this

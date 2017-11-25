@@ -30,18 +30,19 @@
 
 </head>
 <body class="">
-  <nav>
-    <div class="nav-wrapper blue darken-4">
-      <a onclick="controller.backToGroupView()" href="#" data-activates="mobile-demo" class="button-collapse left">
-        <i class="material-icons">arrow_back</i>
-      </a>
-      <a href="#!" class="brand-logo">Task.it</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse right">
-        <i class="material-icons">menu</i>
-      </a>
-    </div>
-  </nav>
   <div id="groupView">
+    <nav>
+      <div class="nav-wrapper blue darken-4">
+        <!-- <a onclick="controller.backToGroupView()" href="#" data-activates="mobile-demo" class="button-collapse left">
+          <i class="material-icons">arrow_back</i>
+        </a> -->
+        <a href="#!" class="brand-logo">Task.it</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse right">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+    </nav>
+
     <br>
     <div class="card col s12 full-height">
       <div class="card-image waves-effect waves-block waves-light group">
@@ -78,6 +79,17 @@
   </div>
 
   <div id="taskView">
+    <nav>
+      <div class="nav-wrapper blue darken-4">
+        <a onclick="controller.backFromTaskToGroup()" href="#" data-activates="mobile-demo" class="button-collapse left">
+          <i class="material-icons">arrow_back</i>
+        </a>
+        <a href="#!" class="brand-logo">Task.it</a>
+        <a onclick="controller.nextFromTaskToChart()" href="#" data-activates="mobile-demo" class="button-collapse right">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+    </nav>
 
     <div class="card" style="
     margin-top: 0px;">
@@ -297,6 +309,18 @@
   </div>
 
   <div id="chartView">
+    <nav>
+      <div class="nav-wrapper blue darken-4">
+        <a onclick="controller.backFromChartToTask()" href="#" data-activates="mobile-demo" class="button-collapse left">
+          <i class="material-icons">arrow_back</i>
+        </a>
+        <a href="#!" class="brand-logo">Task.it</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse right">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+    </nav>
+
     <div style="width: 100%">
         <canvas id="canvas" height="360"></canvas>
     </div>
