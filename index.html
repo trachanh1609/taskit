@@ -305,7 +305,14 @@
 
 
     <button class="waves-effect waves-light btn" onclick="controller.backToGroupView()"><i class="material-icons left">arrow_back</i> Back</button> -->
-
+    <div>
+        <h4 style="margin: 20px">
+            List of your expenses
+        </h4>
+    </div>
+    </div>
+    <ul class="collection" id="listToAdd">
+    </ul>
   </div>
 
   <div id="chartView">
@@ -329,6 +336,28 @@
         <a id="barChartDataSpends" class="waves-effect waves-light btn-large green lighten-1"><i class="material-icons left">monetization_on</i>Money</a>
     </div>
   </div>
+
+  <script type="text/javascript" src="js/jQuery.3.2.1.js"></script>
+  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+
+  <script>
+        $.get("http://127.0.0.1:8081/list", function (data) {
+            console.log(data);
+            data.forEach((e) => {
+                tmplt =
+        `<li class="collection-item avatar">
+            <i class="material-icons circle green">${(() => {
+            const data = ["account_balance_wallet", "battery_full", "business_center", "content_cut"]
+            return data[Math.floor(Math.random() * 4)]
+            })()}</i>
+            <span class="title">${e.descr}</span>
+            <p><b>${e.amount}</b><br></p>
+            <a href="#!" class="secondary-content"><i class="material-icons">add_circle</i></a>
+        </li>`
+            document.getElementById('listToAdd').insertAdjacentHTML( 'beforeend', tmplt);})
+        });
+    </script>
 
   <script>
           var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -443,8 +472,6 @@
       </script>
 
 
-  <script type="text/javascript" src="js/jQuery.3.2.1.js"></script>
-  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
