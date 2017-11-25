@@ -1,8 +1,14 @@
 // $(function() {
   const model = {
     init () {
+      this.currentPrice = 10 ;
 
-
+    },
+    bid() {
+      this.currentPrice = this.currentPrice * 1.5 ;
+    },
+    getCurrentPrice(){
+      return this.currentPrice;
     }
   };
 
@@ -10,12 +16,23 @@
     init () {
       model.init();
       view.init();
+      this.updatePrice();
     },
     nextToTaskView() {
       view.goToTaskView();
     },
     backToGroupView() {
       view.goToGroupView();
+    },
+    bidPrice() {
+      model.bid();
+      view.updatePrice(model.getCurrentPrice());
+    },
+    updatePrice(){
+      view.updatePrice(model.getCurrentPrice());
+    },
+    takeTheTask() {
+      console.log('task is taken')
     }
   };
 
@@ -24,6 +41,7 @@
       this.groupView = $('#groupView');
       this.taskView = $('#taskView');
       this.cards = $('.card');
+      this.bidPrice = $('#bidPrice');
 
       this.taskView.hide();
       this.addEventToCards();
@@ -43,6 +61,9 @@
           self.goToTaskView();
         })
       });
+    },
+    updatePrice(newPrice) {
+      this.bidPrice.html(newPrice);
     }
 
   };
