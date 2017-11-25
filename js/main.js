@@ -77,6 +77,7 @@ $(function() {
       view.init();
       // console.log('controller initiated');
       view.updateOrigin(model.data);
+      view.updateTranslated(model.data);
     }
   };
 
@@ -96,8 +97,14 @@ $(function() {
         self.origin.append(lineContent);
       });
     },
-    updateTranslated(){
-
+    updateTranslated(lyrics){
+      let self = this;
+      self.translated.html('');
+      lyrics.lines.forEach(function(line){
+        let lineContent = $('<p>' +line.english.full  + '</p>')
+        // console.log(line.origin.full);
+        self.translated.append(lineContent);
+      });
     }
   };
 
