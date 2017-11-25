@@ -1,5 +1,5 @@
 .full-height {
-  height: 13em;
+  height: 15em;
 }
 
 .card {
@@ -10,5 +10,11 @@
 }
 
 .groupImg{
-  height: 6em;
+  height: 11em;
+  background-size: contain;
+}
+.floatingGroup{
+  position: absolute;
+  top: 3em;
+  left:30%;
 }
