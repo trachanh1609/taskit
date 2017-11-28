@@ -1,24 +1,16 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Musense</title>
-  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen,projection"/>
+  <title>task.it!</title>
+  <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="main.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   <!-- <title>Stacked Bar Chart</title> -->
   <script src="http://www.chartjs.org/dist/2.7.1/Chart.bundle.js"></script>
   <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-  <!--Import Google Icon Font-->
-  <!-- <link href=“https://fonts.googleapis.com/icon?family=Material+Icons” rel=“stylesheet”> -->
-  <!--Import materialize.css-->
-  <!-- <link rel=“stylesheet” href=“https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css”> -->
-  <!--Let browser know website is optimized for mobile-->
-  <!-- <meta name=“viewport” content=“width=device-width, initial-scale=1.0”/> -->
-  <!--Import jQuery before materialize.js-->
-  <!-- <script type=“text/javascript” src=“https://code.jquery.com/jquery-3.2.1.min.js”></script> -->
   <style>
   canvas {
       -moz-user-select: none;
@@ -27,451 +19,479 @@
   }
   </style>
 
-
 </head>
-<body class="">
-  <div id="groupView">
-    <nav>
-      <div class="nav-wrapper blue darken-4">
-        <!-- <a onclick="controller.backToGroupView()" href="#" data-activates="mobile-demo" class="button-collapse left">
-          <i class="material-icons">arrow_back</i>
-        </a> -->
-        <a href="#!" class="brand-logo">Task.it</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse right">
-          <i class="material-icons">menu</i>
-        </a>
-      </div>
-    </nav>
 
-    <br>
-    <div class="card col s12 full-height">
-      <div class="card-image waves-effect waves-block waves-light group">
-        <div class="horizontal floatingGroup">
-            <a class="btn-floating blue darken-2"><i class="material-icons">transfer_within_a_station</i></a>
-            <a class="btn-floating blue darken-2"><i class="material-icons">person_add</i></a>
-            <a class="btn-floating blue darken-2"><i class="material-icons">gamepad</i></a>
-            <a class="btn-floating blue darken-2"><i class="material-icons">format_list_numbered</i></a>
-        </div>
-        <img class="groupImg" src="https://picsum.photos/200/300/?random">
-        <span class="card-title white-text">Shared Apartment</span>
+<body>
 
-      </div>
-      <div class="card-content">
-        <p>+15<i class="tiny material-icons">euro_symbol</i></p>
-      </div>
-    </div>
-    <br>
-    <div class="card col s12 full-height">
-      <div class="card-image waves-effect waves-block waves-light group">
-        <div class="horizontal floatingGroup">
-            <a class="btn-floating blue darken-2"><i class="material-icons">transfer_within_a_station</i></a>
-            <a class="btn-floating blue darken-2"><i class="material-icons">person_add</i></a>
-            <a class="btn-floating blue darken-2"><i class="material-icons">gamepad</i></a>
-            <a class="btn-floating blue darken-2"><i class="material-icons">format_list_numbered</i></a>
+  
+
+        <!-- Account Dialog -->
+        <div id="modalAccount" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <h4>Account History</h4>
+              <ul class="collection" id="listToAdd">
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a class="btn-flat ">Close</a>              
+            </div>
+          </div>
+
+          
+    <!-- ADD NEW CHALLENGE DIALOG -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>New Challenge</h4>
+              <form >
+                  <div class="input-field">
+                    <i class="material-icons prefix">label_outline</i>
+                    <input id="taskName" required id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Name</label>
+                  </div>
+                  <!-- <div class="input-field">
+                    <i class="material-icons prefix">short_text</i>
+                    <input id="icon_telephone" type="tel" class="validate">
+                    <label for="icon_telephone">Description</label>
+                  </div> -->
+                  <div class="input-field">
+                    <i class="material-icons prefix">euro_symbol</i>
+                    <input id="taskReward" type="tel" class="validate">
+                    <label for="icon_telephone">Initial Reward</label>
+                  </div>
+                  <div class="input-field">
+                      <i class="material-icons prefix">face</i>
+                      <select id="taskTag" class="icons">
+                        <option value=""  selected>Tag Person</option>
+                        <option value="" data-icon="images/jan.jpg" class="circle">Jan</option>
+                        <option value="" data-icon="images/vinny.jpg" class="circle">Vinny</option>
+                      </select>
+                    </div>
+                  <!-- <div class="input-field">
+                      <i class="material-icons prefix">face</i>
+                      <input  id="icon_prefix" type="text" class="validate">
+                      <label for="icon_prefix">Person</label>
+                    </div> -->
+                  <!-- <div class="input-field">
+                    <i class="material-icons prefix">repeat</i>
+                    <input id="icon_telephone" type="tel" class="validate">
+                    <label for="icon_telephone">Repeat</label>
+                  </div> -->
+                  <div class="input-field">
+                      <i class="material-icons prefix">repeat</i>
+                      <select id="taskRepeat">
+                        <option value=""  selected>Repeat</option>
+                        <option value="">Monthly</option>
+                        <option value="">Weekly</option>
+                      </select>
+                    </div>
+              </form>
         </div>
-        <span class="card-title white-text">Football Team</span>
-        <img class="groupImg" src="https://picsum.photos/200/300/?random">
+        <div class="modal-footer">
+            <a class="btn-flat ">Close</a>
+          <a href="#!" onclick="addTask()" class="modal-action  waves-effect waves-green btn "><i class="material-icons right">send</i>Add </a>
+        </div>
       </div>
-      <div class="card-content">
-        <p>-5<i class="tiny material-icons">euro_symbol</i></p>
+
+      <div id="groupView">
+          <nav>
+            <div class="nav-wrapper blue darken-4">
+              <!-- <a onclick="controller.backToGroupView()" href="#" data-activates="mobile-demo" class="button-collapse left">
+                <i class="material-icons">arrow_back</i>
+              </a> -->
+              <a href="#!" class="brand-logo">Task.it</a>
+              <a href="#" data-activates="mobile-demo" class="button-collapse right">
+                <i class="material-icons">menu</i>
+              </a>
+            </div>
+          </nav>
+      
+          <br>
+          <div class="card col s12 full-height">
+            <div class="card-image waves-effect waves-block waves-light group">
+              <div class="horizontal floatingGroup">
+                  <a class="btn-floating blue darken-2"><i class="material-icons">transfer_within_a_station</i></a>
+                  <a class="btn-floating blue darken-2"><i class="material-icons">person_add</i></a>
+                  <a class="btn-floating blue darken-2"><i class="material-icons">gamepad</i></a>
+                  <a class="btn-floating blue darken-2"><i class="material-icons">format_list_numbered</i></a>
+              </div>
+              <img class="groupImg" src="https://picsum.photos/200/300/?random">
+              <span class="card-title white-text">Shared Apartment</span>
+      
+            </div>
+            <div class="card-content">
+              <p>+15<i class="tiny material-icons">euro_symbol</i></p>
+            </div>
+          </div>
+          <br>
+          <div class="card col s12 full-height">
+            <div class="card-image waves-effect waves-block waves-light group">
+              <div class="horizontal floatingGroup">
+                  <a class="btn-floating blue darken-2"><i class="material-icons">transfer_within_a_station</i></a>
+                  <a class="btn-floating blue darken-2"><i class="material-icons">person_add</i></a>
+                  <a class="btn-floating blue darken-2"><i class="material-icons">gamepad</i></a>
+                  <a class="btn-floating blue darken-2"><i class="material-icons">format_list_numbered</i></a>
+              </div>
+              <span class="card-title white-text">Football Team</span>
+              <img class="groupImg" src="https://picsum.photos/200/300/?random">
+            </div>
+            <div class="card-content">
+              <p>-5<i class="tiny material-icons">euro_symbol</i></p>
+            </div>
+          </div>
       </div>
+
+      <div id="taskView">
+
+          <nav>
+              <div class="nav-wrapper blue darken-4">
+                <a onclick="controller.backFromTaskToGroup()" href="#" data-activates="mobile-demo" class="button-collapse left">
+                  <i class="material-icons">arrow_back</i>
+                </a>
+                <a href="#!" class="brand-logo">Task.it</a>
+                <a onclick="controller.nextFromTaskToChart()" href="#" data-activates="mobile-demo" class="button-collapse right">
+                  <i class="material-icons">trending_up</i>
+                </a>
+              </div>
+        </nav>
+
+  <div class="card" style="
+  margin-top: 0px;">
+    <div class="card-image">
+      <img src="images/colloc.jpg">
+      <span class="card-title" style="
+        padding-bottom: 10px;">
+        <h4>Flatmates — 123,00 EUR</h4>
+      </span>
     </div>
   </div>
 
-  <div id="taskView">
-    <nav>
-      <div class="nav-wrapper blue darken-4">
-        <a onclick="controller.backFromTaskToGroup()" href="#" data-activates="mobile-demo" class="button-collapse left">
-          <i class="material-icons">arrow_back</i>
-        </a>
-        <a href="#!" class="brand-logo">Task.it</a>
-        <a onclick="controller.nextFromTaskToChart()" href="#" data-activates="mobile-demo" class="button-collapse right">
-          <i class="material-icons">menu</i>
-        </a>
-      </div>
-    </nav>
-
-    <div class="card" style="
-    margin-top: 0px;">
-      <div class="card-image">
-        <img src="assets/colloc.jpg">
-        <span class="card-title" style="
-          padding-bottom: 10px;">
-          <h4>Flatmates — 123,00 EUR</h4>
-        </span>
-      </div>
-    </div>
-    <ul class="tabs ">
-      <li class="tab ">
-        <a class="active blue-text text-darken-4" href="#test1 ">Challenges</a>
-      </li>
-      <li class="tab ">
-        <a class="blue-text text-darken-4" href="#test2">Expenses</a>
-      </li>
-      <!-- <li class="tab col s3">
-        <a class="blue-text text-darken-4" href="#test3">Members</a>
-      </li> -->
-    </ul>
-    <div id="test1" class="col s12">
-      <!-- CONTENT TAB 1 -->
-      <ul class="collection" style="
-            border-top-width: 0px; margin-bottom: 7px;           border-bottom-width: 0px;
-            ">
-        <li class="collection-item avatar dismissable">
-          <i class="material-icons circle green">weekend</i>
-          <span class="title">Clean the Livingroom</span>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <!-- <a class="btn-floating btn-tiny waves-effect waves-light green"><i class="material-icons">keyboard_arrow_up</i></a> -->
+  <ul class="tabs ">
+    <li class="tab ">
+      <a class=" blue-text text-darken-4" href="#test1 ">Challenges</a>
+    </li>
+    <li class="tab ">
+      <a class=" active blue-text text-darken-4" href="#test2">Expenses</a>
+    </li>
+    <!-- <li class="tab col s3">
+      <a class="blue-text text-darken-4" href="#test3">Members</a>
+    </li> -->
+  </ul>
+  <div id="test1" class="col s12">
+    <!-- CONTENT TAB 1 -->
+    <ul id="taskList" class="collection" style="
+          border-top-width: 0px; margin-bottom: 7px;           border-bottom-width: 0px;
+          ">
+      <li class="collection-item avatar dismissable">
+        <i class="material-icons circle green">weekend</i>
+        <span class="title">Clean the Livingroom</span>
+        <p>
+          Once a Month
+        </p>
+        5,00 EUR
+        <p>
+        </p>
+        <a href="#!" class="secondary-content">
           <p>
-            Once a Month
+            <input type="checkbox" id="blank_label" checked />
+            <label for="blank_label"></label>
           </p>
-          <p class="row">
+        </a>
+      </li>
+
+      <li class="collection-item avatar dismissable">
+        <i class="material-icons circle red">local_bar</i>
+        <span class="title">Get Drinks for Party</span>
+        <p>
+          10% Party Discount
+        </p>
+        <div class="chip">
+          Christmas Party
+          <i class="close material-icons">close</i>
+        </div>
+        <a href="#!" class="secondary-content">
+          <p>
+            <input type="checkbox" id="blank_label2" />
+            <label for="blank_label2"></label>
+          </p>
+        </a>
+      </li>
+
+      <li class="collection-item avatar dismissable">
+        <i class="material-icons circle blue">invert_colors</i>
+        <span class="title">Clean the Bathroom</span>
+        <p>
+          Once a Week
+        </p>
+        <p class="row">
             <span class="currency">
               <strong id="currentBidPrice"></strong><strong> EUR</strong> &nbsp;
               <a onclick="controller.bidPrice()" class="btn-floating btn-tiny waves-effect waves-light green"><i class="material-icons">keyboard_arrow_up</i></a>
             </span>
-          </p>
-
+</p>
+        <div class="chip">
+          <img src="images/jan.jpg" alt="Contact Person"> Jan
+          <i class="close material-icons">close</i>
+        </div>
+        <a href="#!" class="secondary-content">
           <p>
+            <input type="checkbox" id="blank_label3" />
+            <label for="blank_label3"></label>
           </p>
-          <a href="#!" class="secondary-content">
-            <p>
-              <input type="checkbox" id="blank_label" checked />
-              <label for="blank_label"></label>
-            </p>
-          </a>
-        </li>
-        <li class="collection-item avatar dismissable">
-          <i class="material-icons circle red">local_bar</i>
-          <span class="title">Get Drinks for Party</span>
-          <p>
-            <span class="currency">
-             <strong>10% Party Discount</strong>
-            </span>
-          </p>
-          <div class="chip">
-            Christmas Party
-            <i class="close material-icons">close</i>
-          </div>
-          <a href="#!" class="secondary-content">
-            <p>
-              <input type="checkbox" id="blank_label2" />
-              <label for="blank_label2"></label>
-            </p>
-          </a>
-        </li>
-        <li class="collection-item avatar dismissable">
-          <i class="material-icons circle blue">invert_colors</i>
-          <span class="title">Clean the Bathroom</span>
-          <p>
-            Once a Week
-          </p>
-          <p>
-            <span class="currency">
-            <strong>5,00 EUR</strong>
-            </span>
-          </p>
-          <div class="chip">
-            <img src="assets/jan.jpg" alt="Contact Person"> Jan
-          </div>
-          <a href="#!" class="secondary-content">
-            <p>
-              <input type="checkbox" id="blank_label3" />
-              <label for="blank_label3"></label>
-            </p>
-          </a>
-        </li>
-        <li style="border-width: 0px;" class="collection-item avatar dismissable"></li>
-      </ul>
-      <div class="fixed-action-btn horizontal">
-        <a class="btn-floating btn-large red">
-          <i class="large material-icons">add</i>
         </a>
-        <ul>
-          <li>
-            <a class="btn-floating red">
-              <i class="material-icons">local_bar</i>
-            </a>
-          </li>
-          <li>
-            <a class="btn-floating yellow darken-1">
-              <i class="material-icons">local_grocery_store</i>
-            </a>
-          </li>
-          <li>
-            <a class="btn-floating blue">
-              <i class="material-icons">invert_colors</i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div id="test2" class="col s12">
-      <!-- CONTENT TAB 2 -->
-      <ul class="collection" style="
-    border-top-width: 0px; margin-bottom: 7px;           border-bottom-width: 0px;
-    ">
-        <li class="collection-item avatar dismissable">
-          <i class="material-icons circle green">weekend</i>
-          <span class="title">Clean the Livingroom</span>
-          <p>
-            Once a Month
-          </p>
-          5,00 EUR
-          <p>
-          </p>
-          <a href="#!" class="secondary-content">
-            <p>
-              <input type="checkbox" id="blank_label_b" checked />
-              <label for="blank_label_b"></label>
-            </p>
-          </a>
-        </li>
-        <li class="collection-item avatar dismissable">
-          <i class="material-icons circle red">local_bar</i>
-          <span class="title">Get Drinks for Party</span>
-          <p>
-            10% Party Discount
-          </p>
-          <div class="chip">
-            Christmas Party
-            <i class="close material-icons">close</i>
-          </div>
-          <a href="#!" class="secondary-content">
-            <p>
-              <input type="checkbox" id="blank_label_b_2" />
-              <label for="blank_label_b_2"></label>
-            </p>
-          </a>
-        </li>
-        <li class="collection-item avatar dismissable">
-          <i class="material-icons circle blue">invert_colors</i>
-          <span class="title">Clean the Bathroom</span>
-          <p>
-            Once a Week
-          </p>
-          <p>
-            5,00 EUR
-          </p>
-          <div class="chip">
-            <img src="assets/jan.jpg" alt="Contact Person"> Jan
-          </div>
-          <a href="#!" class="secondary-content">
-            <p>
-              <input type="checkbox" id="blank_label_b_3" />
-              <label for="blank_label_b_3"></label>
-            </p>
-          </a>
-        </li>
-        <li style="border-width: 0px;" class="collection-item avatar dismissable"></li>
-      </ul>
-      <div class="fixed-action-btn horizontal">
-        <a class="btn-floating btn-large red">
-          <i class="large material-icons">add</i>
-        </a>
-        <ul>
-          <li>
-            <a class="btn-floating red">
-              <i class="material-icons">local_bar</i>
-            </a>
-          </li>
-          <li>
-            <a class="btn-floating yellow darken-1">
-              <i class="material-icons">local_grocery_store</i>
-            </a>
-          </li>
-          <li>
-            <a class="btn-floating blue">
-              <i class="material-icons">invert_colors</i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Icons:
-    kitchen
-    local_bar
-    local_dining
-    local_grocery_store
-    local_pizza
-    weekend (couch)
-    invert_colors (cleaning) -->
-
-    <!-- <div class="row">
-      <h3 id="bidPrice"></h3>
-      <button class="waves-effect waves-light btn" onclick="controller.bidPrice()"><i class="material-icons left">add</i>Bid</button>
-      <button class="waves-effect waves-light btn" onclick="controller.takeTheTask()"><i class="material-icons left">add_shopping_cart</i>Take the task</button>
-    </div>
-
-
-    <button class="waves-effect waves-light btn" onclick="controller.backToGroupView()"><i class="material-icons left">arrow_back</i> Back</button> -->
-    <div>
-        <h4 style="margin: 20px">
-            List of your expenses
-        </h4>
-    </div>
-    </div>
-    <ul class="collection" id="listToAdd">
+      </li>
+      <li style="border-width: 0px;" class="collection-item avatar dismissable"></li>
     </ul>
+
+    <div class="fixed-action-btn horizontal">
+      <a class="btn-floating btn-large red"  href="#modal1">
+        <i class="large material-icons">add</i>
+      </a>
+      <ul>
+        <li>
+          <a class="btn-floating red modal-trigger" onclick="taskType='local_bar'; taskColor='red'" href="#modal1">
+            <i class="material-icons">local_bar</i>
+          </a>
+        </li>
+        <li>
+          <a class="btn-floating yellow darken-1 modal-trigger" href="#modal1" onclick="taskType='local_bar'; taskColor='yellow darken-1'" >
+            <i class="material-icons">local_grocery_store</i>
+          </a>
+        </li>
+        <li>
+          <a class="btn-floating blue modal-trigger waves-effect waves-light btn " href="#modal1" onclick="taskType='local_bar'; taskColor='blue'" >
+            <i class="material-icons">invert_colors</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    
+
+
+
   </div>
+  <div id="test2" class="col s12">
+    <!-- CONTENT TAB 2 EXPENSES-->
+    <ul id="expensesList" class="collection" style="
+border-top-width: 0px; margin-bottom: 7px;           border-bottom-width: 0px;
+">
+      <li class="collection-item avatar dismissable">
+        <i class="material-icons circle yellow darken-1">local_grocery_store</i>
+        <span class="title">Onions</span>
+        <p>
+        <div class="chip">
+            <img src="images/jan.jpg" alt="Contact Person"> Jan
+          </div>
+        </p>
+        <a href="#!" class="secondary-content">
+          <p>
+              1,98 EUR
+          </p>
+        </a>
+      </li>
+
+
+
+      <li class="collection-item avatar dismissable">
+        <i class="material-icons circle blue">invert_colors</i>
+        <span class="title">Toiletpaper</span>
+        <p></p><div class="chip">
+          
+          <img src="images/vinny.jpg" alt="Contact Person">Vinny
+        </div></p>
+        <a href="#!" class="secondary-content">
+          <p>
+              2,90 EUR
+          </p>
+        </a>
+      </li>
+      <li style="border-width: 0px;" class="collection-item avatar dismissable"></li>
+    </ul>
+
+    <div class="fixed-action-btn horizontal">
+      <a class="btn-floating btn-large red">
+        <i class="large material-icons">add</i>
+      </a>
+      <ul>
+        <li>
+          <a class="btn-floating red">
+            <i class="material-icons">local_bar</i>
+          </a>
+        </li>
+        <li>
+          <a class="btn-floating yellow darken-1">
+            <i class="material-icons">local_grocery_store</i>
+          </a>
+        </li>
+        <li>
+          <a class="btn-floating blue">
+            <i class="material-icons">invert_colors</i>
+          </a>
+        </li>
+        <li>
+          <a class="btn-floating green modal-trigger waves-effect waves-light btn " href="#modalAccount">
+            <i class="material-icons">account_balance</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+  
+</div>
+  </div>
+</div>
 
   <div id="chartView">
-    <nav>
-      <div class="nav-wrapper blue darken-4">
-        <a onclick="controller.backFromChartToTask()" href="#" data-activates="mobile-demo" class="button-collapse left">
-          <i class="material-icons">arrow_back</i>
-        </a>
-        <a href="#!" class="brand-logo">Task.it</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse right">
-          <i class="material-icons">menu</i>
-        </a>
+      <nav>
+        <div class="nav-wrapper blue darken-4">
+          <a onclick="controller.backFromChartToTask()" href="#" data-activates="mobile-demo" class="button-collapse left">
+            <i class="material-icons">arrow_back</i>
+          </a>
+          <a href="#!" class="brand-logo">Task.it</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse right">
+          </a>
+        </div>
+      </nav>
+  
+      <div style="width: 100%">
+          <canvas id="canvas" height="360"></canvas>
       </div>
-    </nav>
-
-    <div style="width: 100%">
-        <canvas id="canvas" height="360"></canvas>
-    </div>
-    <div style="text-align: center; margin-top: 20px">
-        <a id="barChartDataTasks" class="waves-effect waves-light btn-large blue darken-2"><i class="material-icons left">beenhere</i>Tasks</a>
-        <a id="barChartDataSpends" class="waves-effect waves-light btn-large green lighten-1"><i class="material-icons left">monetization_on</i>Money</a>
-    </div>
+      <div style="text-align: center; margin-top: 20px">
+          <a id="barChartDataTasks" class="waves-effect waves-light btn-large blue darken-2"><i class="material-icons left">beenhere</i>Tasks</a>
+          <a id="barChartDataSpends" class="waves-effect waves-light btn-large green lighten-1"><i class="material-icons left">monetization_on</i>Money</a>
+      </div>
   </div>
 
   <script type="text/javascript" src="js/jQuery.3.2.1.js"></script>
   <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
-
   <script>
-        $.get("http://127.0.0.1:8081/list", function (data) {
-            console.log(data);
-            data.forEach((e) => {
-                tmplt =
-        `<li class="collection-item avatar">
-            <i class="material-icons circle green">${(() => {
-            const data = ["account_balance_wallet", "battery_full", "business_center", "content_cut"]
-            return data[Math.floor(Math.random() * 4)]
-            })()}</i>
-            <span class="title">${e.descr}</span>
-            <p><b>${e.amount}</b><br></p>
-            <a href="#!" class="secondary-content"><i class="material-icons">add_circle</i></a>
-        </li>`
-            document.getElementById('listToAdd').insertAdjacentHTML( 'beforeend', tmplt);})
+      $.get("http://127.0.0.1:8081/list", function (data) {
+          console.log(data);
+          data.forEach((e) => {
+              tmplt =
+      `<li class="collection-item avatar" onclick="addExpense('${e.descr}', '${e.amount}')">
+          <i class="material-icons circle green">${(() => {
+          const data = ["account_balance_wallet", "battery_full", "business_center", "content_cut"]
+          return data[Math.floor(Math.random() * 4)]
+          })()}</i>
+          <span class="title">${e.descr}</span>
+          <p><b>${e.amount}</b><br></p>
+          <a href="#!" class="secondary-content"><i class="material-icons">add_circle</i></a>
+      </li>`
+          document.getElementById('listToAdd').insertAdjacentHTML( 'beforeend', tmplt);})
+      });
+  </script>
+
+<script>
+        var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var color = Chart.helpers.color;
+        var blue_darken_4 = "#0d47a1";
+        var DEF_FONT_SIZE = 15;
+        Chart.defaults.global.defaultFontSize = DEF_FONT_SIZE;
+        var DS1 = [{
+                label: 'You',
+                backgroundColor: blue_darken_4,
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [5,2, 4, 2]
+            }, {
+                label: 'Vinny',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [3,1,3,4]
+            }];
+        var DS2 = [{
+                label: 'You',
+                backgroundColor: blue_darken_4,
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [5,2, 4, 2]
+            }, {
+                label: 'Vinny',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [5,0,4,4]
+            }];
+        var barChartDataTasks = {
+            labels: ["August", "September", "October", "November"],
+            datasets: DS1
+        };
+        var barChartDataSpends = {
+            labels: ["August", "September", "October", "November"],
+            datasets: [{
+                label: 'You',
+                backgroundColor: blue_darken_4,
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [5,2, 4, 2]
+            }, {
+                label: 'Vinny',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [5,0,4,4]
+            }]
+        };
+        var barChartData = barChartDataTasks;
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                defaultFontSize: 25,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Yours and Vinny expences'
+                        // defaultFontSize: 20
+                    }
+                }
+            });
+        };
+        document.getElementById('barChartDataTasks').addEventListener('click', function() {
+            barChartData.datasets = [{
+                label: 'You',
+                backgroundColor: blue_darken_4,
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [20,19, 13, 21]
+            }, {
+                label: 'Vinny',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [21,34,21,19]
+            }]
+            window.myBar.update();
         });
+        document.getElementById('barChartDataSpends').addEventListener('click', function() {
+            barChartData.datasets = [{
+                label: 'You',
+                backgroundColor: blue_darken_4,
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [5,2, 4, 2]
+            }, {
+                label: 'Vinny',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [3,1,3,4]
+            }]
+            window.myBar.update();
+        });
+        var colorNames = Object.keys(window.chartColors);
     </script>
-
-  <script>
-          var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-          var color = Chart.helpers.color;
-          var blue_darken_4 = "#0d47a1";
-          var DEF_FONT_SIZE = 15;
-          Chart.defaults.global.defaultFontSize = DEF_FONT_SIZE;
-          var DS1 = [{
-                  label: 'You',
-                  backgroundColor: blue_darken_4,
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [5,2, 4, 2]
-              }, {
-                  label: 'John',
-                  backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                  borderColor: window.chartColors.blue,
-                  borderWidth: 1,
-                  data: [3,1,3,4]
-              }];
-          var DS2 = [{
-                  label: 'You',
-                  backgroundColor: blue_darken_4,
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [5,2, 4, 2]
-              }, {
-                  label: 'John',
-                  backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                  borderColor: window.chartColors.blue,
-                  borderWidth: 1,
-                  data: [5,0,4,4]
-              }];
-          var barChartDataTasks = {
-              labels: ["January", "February", "March", "April"],
-              datasets: DS1
-          };
-          var barChartDataSpends = {
-              labels: ["January", "February", "March", "April"],
-              datasets: [{
-                  label: 'You',
-                  backgroundColor: blue_darken_4,
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [5,2, 4, 2]
-              }, {
-                  label: 'John',
-                  backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                  borderColor: window.chartColors.blue,
-                  borderWidth: 1,
-                  data: [5,0,4,4]
-              }]
-
-          };
-          var barChartData = barChartDataTasks;
-
-          window.onload = function() {
-              var ctx = document.getElementById("canvas").getContext("2d");
-              window.myBar = new Chart(ctx, {
-                  type: 'bar',
-                  data: barChartData,
-                  defaultFontSize: 25,
-                  options: {
-                      responsive: true,
-                      legend: {
-                          position: 'top',
-                      },
-                      title: {
-                          display: true,
-                          text: 'Yours and John expences'
-                          // defaultFontSize: 20
-                      }
-                  }
-              });
-
-          };
-
-          document.getElementById('barChartDataTasks').addEventListener('click', function() {
-              barChartData.datasets = [{
-                  label: 'You',
-                  backgroundColor: blue_darken_4,
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [20,19, 13, 21]
-              }, {
-                  label: 'John',
-                  backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                  borderColor: window.chartColors.blue,
-                  borderWidth: 1,
-                  data: [21,34,21,19]
-              }]
-              window.myBar.update();
-          });
-          document.getElementById('barChartDataSpends').addEventListener('click', function() {
-              barChartData.datasets = [{
-                  label: 'You',
-                  backgroundColor: blue_darken_4,
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [5,2, 4, 2]
-              }, {
-                  label: 'John',
-                  backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                  borderColor: window.chartColors.blue,
-                  borderWidth: 1,
-                  data: [3,1,3,4]
-              }]
-              window.myBar.update();
-          });
-          var colorNames = Object.keys(window.chartColors);
-
-      </script>
-
 
   <script type="text/javascript" src="js/main.js"></script>
 </body>
+
 </html>
